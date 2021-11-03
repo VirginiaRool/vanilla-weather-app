@@ -1,1 +1,1 @@
-alert("What city are you searching?");
+//alert("What city are you searching?");
