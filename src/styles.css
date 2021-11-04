@@ -1,5 +1,6 @@
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Mulish", sans-serif;
+  font-weight: 600;
   color: #315b96;
 }
 
@@ -16,9 +17,8 @@ li {
   border-radius: 10px;
 }
 
-.city-name,
-.city-temperature {
-  font-family: "Raleway", sans-serif;
+.actualData {
+  font-weight: 800;
   font-weight: bold;
   font-size: 20px;
 }
