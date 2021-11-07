@@ -10,6 +10,10 @@ li {
   padding: 0;
 }
 
+li first-letter {
+  text-transform: capitalize;
+}
+
 .app-container {
   margin: 10px;
   max-width: 760px;
@@ -25,4 +29,5 @@ li {
 
 .repository {
   font-size: 12px;
+  text-align: center;
 }

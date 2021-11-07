@@ -1,19 +1,48 @@
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+
+  let dayHour = date.getHours();
+  if (dayHour < 10) {
+    dayHour = `0${dayHour}`;
+  }
+
+  let dayMinutes = date.getMinutes();
+  if (dayMinutes < 10) {
+    dayMinutes = `0${dayMinutes}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let dayName = days[date.getDay()];
+  return `${dayName}, ${dayHour}:${dayMinutes}`;
+}
+
 function displayTemperature(response) {
   console.log(response.data.main);
   let cityElement = document.querySelector("#city-name");
-  cityElement.innerHTML = response.data.name;
   let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
   let descriptionElement = document.querySelector("#temp-description");
-  descriptionElement.innerHTML = response.data.weather[0].description;
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = response.data.main.humidity;
   let windElement = document.querySelector("#wind");
-  windElement.innerHTML = response.data.wind.speed;
   let maxTempElement = document.querySelector("#temp-max");
-  maxTempElement.innerHTML = Math.round(response.data.main.temp_max);
   let minTempElement = document.querySelector("#temp-min");
+  let dateElement = document.querySelector("#date");
+
+  cityElement.innerHTML = response.data.name;
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = response.data.wind.speed;
+  maxTempElement.innerHTML = Math.round(response.data.main.temp_max);
   minTempElement.innerHTML = Math.round(response.data.main.temp_min);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function getApiInformation() {
