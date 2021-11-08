@@ -26,41 +26,42 @@
         <div class="row">
           <div class="col-6">
             <form id="search-city">
-              <div class="input-group mb-3">
+              <div class="input-group input-group-sm mb-3">
                 <input
                   id="search-city-input"
                   type="text"
                   class="form-control"
-                  placeholder="Search a city here"
+                  placeholder="Type a city"
                   aria-label="Recipient's username"
                   aria-describedby="button-search"
                   autofocus="on"
                   autocomplete=""
                 />
-                <button
-                  class="btn btn-outline-secondary"
-                  type="submit"
-                  id="button-search"
-                >
+                <button class="btn" type="submit" id="button-search">
                   Search
                 </button>
               </div>
             </form>
 
             <ul class="forecastDescription">
-              <li>Last updated: <span id="date"></span></li>
-              <li>Humidity: <span id="humidity"></span>%</li>
-              <li>Wind: <span id="wind"></span>km/hr</li>
-              <li>Max: <span id="temp-max"></span>°</li>
-              <li>Min: <span id="temp-min"></span>°</li>
+              <li class="lastUpdated">Last updated: <span id="date"></span></li>
+              <li class="actualHumidity">
+                Humidity: <span id="humidity"></span>%
+              </li>
+              <li class="actualWind">Wind: <span id="wind"></span>km/hr</li>
+              <li class="showMaxTemp">Max: <span id="temp-max"></span>°</li>
+              <li class="showMinTemp">Min: <span id="temp-min"></span>°</li>
             </ul>
           </div>
 
-          <div class="col-4">
+          <div class="col-6">
             <div class="actualData">
               <ul>
                 <li id="city-name"></li>
-                <li id="temperature">
+                <li
+                  id="temperature"
+                  class="d-flex align-items-start justify-content-end"
+                >
                   <span id="current-temp"> </span>
                   <span class="tempUnits">
                     <a href="#" id="celsius-link" class="active">°C</a> |
