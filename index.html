@@ -57,20 +57,28 @@
           </div>
 
           <div class="col-4">
-            <ul class="actualData">
-              <li id="city-name"></li>
-              <li id="temperature"><span id="current-temp"> </span>°C | °F</li>
-              <li id="temp-description"></li>
-              <li>
-                <img
-                  class="weather-image"
-                  src="images\undraw_clouds.svg"
-                  alt="Cloudy"
-                  width="50%"
-                  id="icon"
-                />
-              </li>
-            </ul>
+            <div class="actualData">
+              <ul>
+                <li id="city-name"></li>
+                <li id="temperature">
+                  <span id="current-temp"> </span>
+                  <span class="tempUnits">
+                    <a href="#" id="celsius-link" class="active">°C</a> |
+                    <a href="#" id="fahrenheit-link">°F</a>
+                  </span>
+                </li>
+                <li id="temp-description"></li>
+                <li>
+                  <img
+                    class="weather-image"
+                    src="images\undraw_clouds.svg"
+                    alt="Cloudy"
+                    width="50%"
+                    id="icon"
+                  />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
