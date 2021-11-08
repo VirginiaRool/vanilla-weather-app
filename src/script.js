@@ -51,12 +51,16 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-function getApiInformation() {
+function searchCity(event) {
+  event.preventDefault();
+  let searchCityInput = document.querySelector("#search-city-input");
+  let cityInputValue = searchCityInput.value;
   let apiKey = "78af43c4b86f6fe747e2eeb5803e94cd";
-  let city = "London";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInputValue}&appid=${apiKey}&units=${units}`;
+
   axios.get(apiUrl).then(displayTemperature);
-  console.log(apiUrl);
 }
 
-getApiInformation();
+let cityForm = document.querySelector("#search-city");
+cityForm.addEventListener("submit", searchCity);

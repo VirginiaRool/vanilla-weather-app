@@ -19,6 +19,7 @@ li::first-letter {
   max-width: 760px;
   background-color: #ffdfdf;
   border-radius: 10px;
+  padding: 15px;
 }
 
 .actualData {
