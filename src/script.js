@@ -38,7 +38,7 @@ function displayForecast(response) {
 
   let forecastElement = document.querySelector("#forecast");
 
-  let forecastHTML = `<div class="row">`;
+  let forecastHTML = `<div class="row justify-content-center">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 5) {
       forecastHTML =
@@ -61,7 +61,7 @@ function displayForecast(response) {
               forecastDay.temp.min
             )}°</span>
           </div>
-        </div>x
+        </div>
       `;
     }
   });
@@ -89,6 +89,8 @@ function displayTemperature(response) {
   let minTempElement = document.querySelector("#temp-min");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
+  let icon = response.data.weather[0].icon;
+  let description = response.data.weather[0].description;
 
   celsiusTemperature = Math.round(response.data.main.temp);
 
@@ -100,13 +102,48 @@ function displayTemperature(response) {
   maxTempElement.innerHTML = Math.round(response.data.main.temp_max);
   minTempElement.innerHTML = Math.round(response.data.main.temp_min);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
+  iconElement.setAttribute("src", changeIcon(icon, description));
+  console.log({ icon: changeIcon(icon, description) });
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   getForecast(response.data.coord);
+}
+
+function changeIcon(icon, description) {
+  let iconImage = "";
+
+  if (icon === "04n" || icon === "04d") {
+    iconImage = "images/broken_clouds.svg";
+  } else if (icon === "03n" || icon === "03d") {
+    iconImage = "images/scattered_clouds.svg";
+  } else if (icon === "13n" || icon === "13d") {
+    iconImage = "images/snow.svg";
+  } else if (icon === "50n" || icon === "50d") {
+    iconImage = "images/mist.svg";
+  } else if (icon === "02n" || icon === "02d") {
+    iconImage = "images/few_clouds.svg";
+  } else if (icon === "01d") {
+    iconImage = "images/sun.svg";
+  } else if (icon === "01n") {
+    iconImage = "images/night.svg";
+  } else if (icon === "09n" || icon === "09d") {
+    iconImage = "images/shower_rain.svg";
+  } else if (icon === "10n" || icon === "10d") {
+    iconImage = "images/rain.svg";
+  } else if (icon === "11n" || icon === "11d") {
+    iconImage = "images/thunderstorm.svg";
+  } else if (description === "tornado") {
+    iconImage = "images/mist.svg";
+  } else if (
+    description === "thunderstorm with light rain" ||
+    description === "thunderstorm with rain" ||
+    description === "thunderstorm with heavy rain" ||
+    description === "thunderstorm with heavy drizzle"
+  ) {
+    iconImage = "images/thunderstorm.svg";
+  }
+
+  return iconImage;
 }
 
 function getPosition(position) {
