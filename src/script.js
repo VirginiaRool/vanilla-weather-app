@@ -1,4 +1,4 @@
-let apiKey = "78af43c4b86f6fe747e2eeb5803e94cd";
+let apiKey = "c7cd54d7f273febb5e037c3f52d9dfdb";
 let units = "metric";
 
 function formatDate(timestamp) {
